@@ -67,8 +67,8 @@ public class InputEventDrawer : PropertyDrawer
     private void FindProperties(SerializedProperty property)
     {
         inputProp = property.FindPropertyRelative("inputAction");
-        eventStartProp = property.FindPropertyRelative("OnInputStarted");
-        eventProp = property.FindPropertyRelative("OnInput");
-        eventCancelProp = property.FindPropertyRelative("OnInputCanceled");
+        eventStartProp = property.FindPropertyRelative("onInputStarted");
+        eventProp = property.FindPropertyRelative("onInput");
+        eventCancelProp = property.FindPropertyRelative("onInputCanceled");
     }
 }

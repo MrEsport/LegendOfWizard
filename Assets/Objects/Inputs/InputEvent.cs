@@ -7,15 +7,33 @@ using UnityEngine.InputSystem;
 public class InputEvent : IDisposable
 {
     [SerializeField] private InputActionReference inputAction;
-    [SerializeField] protected UnityEvent OnInputStarted;
-    [SerializeField] protected UnityEvent OnInput;
-    [SerializeField] protected UnityEvent OnInputCanceled;
+    [SerializeField] protected UnityEvent onInputStarted;
+    [SerializeField] protected UnityEvent onInput;
+    [SerializeField] protected UnityEvent onInputCanceled;
+
+    public event UnityAction OnInputStarted
+    {
+        add => onInputStarted.AddListener(value);
+        remove => onInputStarted.RemoveListener(value);
+    }
+
+    public event UnityAction OnInput
+    {
+        add => onInput.AddListener(value);
+        remove => onInput.RemoveListener(value);
+    }
+
+    public event UnityAction OnInputCanceled
+    {
+        add => onInputCanceled.AddListener(value);
+        remove => onInputCanceled.RemoveListener(value);
+    }
 
     public InputEvent()
     {
-        OnInputStarted = new UnityEvent();
-        OnInput = new UnityEvent();
-        OnInputCanceled = new UnityEvent();
+        onInputStarted = new UnityEvent();
+        onInput = new UnityEvent();
+        onInputCanceled = new UnityEvent();
     }
 
     public virtual void Dispose()
@@ -27,9 +45,9 @@ public class InputEvent : IDisposable
             inputAction.action.canceled -= OnActionCanceled;
         }
 
-        OnInputStarted.RemoveAllListeners();
-        OnInput.RemoveAllListeners();
-        OnInputCanceled.RemoveAllListeners();
+        onInputStarted.RemoveAllListeners();
+        onInput.RemoveAllListeners();
+        onInputCanceled.RemoveAllListeners();
     }
 
     public void Init()
@@ -44,20 +62,17 @@ public class InputEvent : IDisposable
 
     protected virtual void OnActionStarted(InputAction.CallbackContext input)
     {
-        Debug.Log($"{input.action.name} Started");
-        OnInputStarted?.Invoke();
+        onInputStarted?.Invoke();
     }
 
     protected virtual void OnActionPerformed(InputAction.CallbackContext input)
     {
-        Debug.Log($"{input.action.name} Performed");
-        OnInput?.Invoke();
+        onInput?.Invoke();
     }
 
     protected virtual void OnActionCanceled(InputAction.CallbackContext input)
     {
-        Debug.Log($"{input.action.name} Canceled");
-        OnInputCanceled?.Invoke();
+        onInputCanceled?.Invoke();
     }
 }
 
@@ -65,15 +80,33 @@ public class InputEvent : IDisposable
 public class InputEvent<T> : IDisposable
 {
     [SerializeField] private InputActionReference inputAction;
-    [SerializeField] protected UnityEvent<T> OnInputStarted;
-    [SerializeField] protected UnityEvent<T> OnInput;
-    [SerializeField] protected UnityEvent OnInputCanceled;
+    [SerializeField] protected UnityEvent<T> onInputStarted;
+    [SerializeField] protected UnityEvent<T> onInput;
+    [SerializeField] protected UnityEvent onInputCanceled;
+
+    public event UnityAction<T> OnInputStarted
+    {
+        add => onInputStarted.AddListener(value);
+        remove => onInputStarted.RemoveListener(value);
+    }
+
+    public event UnityAction<T> OnInput
+    {
+        add => onInput.AddListener(value);
+        remove => onInput.RemoveListener(value);
+    }
+
+    public event UnityAction OnInputCanceled
+    {
+        add => onInputCanceled.AddListener(value);
+        remove => onInputCanceled.RemoveListener(value);
+    }
 
     public InputEvent()
     {
-        OnInputStarted = new UnityEvent<T>();
-        OnInput = new UnityEvent<T>();
-        OnInputCanceled = new UnityEvent();
+        onInputStarted = new UnityEvent<T>();
+        onInput = new UnityEvent<T>();
+        onInputCanceled = new UnityEvent();
     }
 
     public virtual void Dispose()
@@ -85,9 +118,9 @@ public class InputEvent<T> : IDisposable
             inputAction.action.canceled -= OnActionCanceled;
         }
 
-        OnInputStarted.RemoveAllListeners();
-        OnInput.RemoveAllListeners();
-        OnInputCanceled.RemoveAllListeners();
+        onInputStarted.RemoveAllListeners();
+        onInput.RemoveAllListeners();
+        onInputCanceled.RemoveAllListeners();
     }
 
     public void Init()
@@ -103,20 +136,17 @@ public class InputEvent<T> : IDisposable
     protected virtual void OnActionStarted(InputAction.CallbackContext input)
     {
         T value = (T)input.ReadValueAsObject();
-        Debug.Log($"{input.action.name} Started : {value}");
-        OnInputStarted?.Invoke(value);
+        onInputStarted?.Invoke(value);
     }
 
     protected virtual void OnActionPerformed(InputAction.CallbackContext input)
     {
         T value = (T)input.ReadValueAsObject();
-        Debug.Log($"{input.action.name} Performed : {value}");
-        OnInput?.Invoke(value);
+        onInput?.Invoke(value);
     }
 
     protected virtual void OnActionCanceled(InputAction.CallbackContext input)
     {
-        Debug.Log($"{input.action.name} Canceled");
-        OnInputCanceled?.Invoke();
+        onInputCanceled?.Invoke();
     }
 }
