@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isMoving = false;
     private bool isDashing = false;
+    private bool canDash = true;
     private Coroutine dashRoutine = null;
 
     private void Start()
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDashInput()
     {
-        if (isDashing) return;
+        if (!canDash) return;
 
         dashDirection = moveDirection;
         Dash();
@@ -97,6 +98,7 @@ public class PlayerController : MonoBehaviour
     private void Dash()
     {
         isDashing = true;
+        canDash = false;
         dashRoutine = StartCoroutine(DashRoutine());
     }
 
@@ -111,12 +113,16 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
+        isDashing = false;
+        yield return new WaitForSeconds(dashCooldown);
+
         EndDash();
     }
 
     private void EndDash()
     {
         isDashing = false;
+        canDash = true;
         if (dashRoutine == null) return;
         StopCoroutine(dashRoutine);
         dashRoutine = null;
