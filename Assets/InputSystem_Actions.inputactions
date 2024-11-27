@@ -10,7 +10,7 @@
                     "type": "Value",
                     "id": "5832737c-5c04-4477-9ceb-e91a979aa846",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.05,max=1)",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "7d2d865d-8880-4d5e-aef2-5b4dad1bdf5d",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.1,max=1)",
                     "interactions": "",
                     "initialStateCheck": true
                 },
