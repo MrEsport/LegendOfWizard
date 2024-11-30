@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 dashDirection = Vector2.down;
 
     private bool isMoving = false;
+    private bool isSprinting = false;
+    private float sprintTimer = 0f;
     private bool isDashing = false;
     private bool canDash = true;
     private Coroutine dashRoutine = null;
@@ -90,6 +92,8 @@ public class PlayerController : MonoBehaviour
     private void OnMoveInputCancel()
     {
         isMoving = false;
+        isSprinting = false;
+        sprintTimer = 0f;
     }
 
     private void OnLookInput(Vector2 lookInputDirection)
@@ -108,7 +112,15 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(playerStats.MoveSpeed.Value * Time.deltaTime * moveDirection);
+        if (!isSprinting)
+        {
+            sprintTimer += Time.fixedDeltaTime;
+            if (sprintTimer >= playerStats.SprintDelay.Value)
+                isSprinting = true;
+        }
+
+        float sprintFactor = isSprinting ? playerStats.SprintSpeedMultiplier.Value : 1f;
+        transform.Translate(playerStats.RunSpeed.Value * sprintFactor * Time.deltaTime * moveDirection);
     }
 
     private void Dash()

@@ -7,12 +7,12 @@ public class SpeedItem : Item
 
     public override void Register(PlayerStats playerStat)
     {
-        playerStat.MoveSpeed.AddModifier(ModifySpeed);
+        playerStat.RunSpeed.AddModifier(ModifySpeed);
     }
 
     public override void Unregister(PlayerStats playerStat)
     {
-        playerStat.MoveSpeed.RemoveModifier(ModifySpeed);
+        playerStat.RunSpeed.RemoveModifier(ModifySpeed);
     }
 
     private float ModifySpeed(float baseValue)

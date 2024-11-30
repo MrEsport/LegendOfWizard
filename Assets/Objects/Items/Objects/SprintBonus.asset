@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7928e1aeb31014449910665acbca2e1, type: 3}
-  m_Name: PlayerCharacterStats
+  m_Script: {fileID: 11500000, guid: 2680db6642c08394b91af1eb0f815efb, type: 3}
+  m_Name: SprintBonus
   m_EditorClassIdentifier: 
-  RunSpeed:
-    baseValue: 10
-  SprintDelay:
-    baseValue: 1.66
-  SprintSpeedMultiplier:
-    baseValue: 1.33
+  sprintReduction: 0.5
