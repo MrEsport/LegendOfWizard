@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2680db6642c08394b91af1eb0f815efb, type: 3}
   m_Name: SprintBonus
   m_EditorClassIdentifier: 
-  sprintReduction: 0.5
+  _name: 
+  _icon: {fileID: -3798150958488373392, guid: c6333737f26dd1443978448cb24e6e67, type: 3}
+  _description: 
+  sprintDelayReduction: 0.5

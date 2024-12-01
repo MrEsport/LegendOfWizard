@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
     private bool canDash = true;
     private Coroutine dashRoutine = null;
 
-    private List<Item> items = new();
-
     private void Start()
     {
         var inputManager = InputManager.Instance;
@@ -39,16 +37,6 @@ public class PlayerController : MonoBehaviour
         inputManager.OnDash.OnInput += OnDashInput;
     }
 
-    private void Update()
-    {
-        if (!Input.GetKeyDown(KeyCode.KeypadMinus)) return;
-        if (items.Count == 0) return;
-
-        int index = UnityEngine.Random.Range(0, items.Count);
-        items[index].Unregister(playerStats);
-        items.RemoveAt(index);
-    }
-
     private void FixedUpdate()
     {
         if (!isDashing && isMoving)
@@ -57,8 +45,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        items.ForEach(i => i.Unregister(playerStats));
-
         var inputManager = InputManager.Instance;
         if (inputManager == null) return;
 
@@ -154,15 +140,5 @@ public class PlayerController : MonoBehaviour
         if (dashRoutine == null) return;
         StopCoroutine(dashRoutine);
         dashRoutine = null;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.TryGetComponent<ItemPickup>(out var pickup)) return;
-
-        var item = pickup.Item;
-
-        items.Add(item);
-        item.Register(playerStats);
     }
 }

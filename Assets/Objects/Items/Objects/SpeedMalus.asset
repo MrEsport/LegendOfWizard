@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a259d0e4a0d412248a9a3d8e851e11f9, type: 3}
   m_Name: SpeedMalus
   m_EditorClassIdentifier: 
+  _name: 
+  _icon: {fileID: -3179711276165319908, guid: 0b309ee25a58a7c419133bed1f71e42c, type: 3}
+  _description: 
   bonusValue: -4

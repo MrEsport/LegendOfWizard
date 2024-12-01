@@ -46,35 +46,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnMove:
     inputAction: {fileID: 1047609411023441853, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-    OnInputStarted:
+    onInputStarted:
       m_PersistentCalls:
         m_Calls: []
-    OnInput:
+    onInput:
       m_PersistentCalls:
         m_Calls: []
-    OnInputCanceled:
+    onInputCanceled:
       m_PersistentCalls:
         m_Calls: []
   OnLook:
     inputAction: {fileID: -7635541363590034986, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-    OnInputStarted:
+    onInputStarted:
       m_PersistentCalls:
         m_Calls: []
-    OnInput:
+    onInput:
       m_PersistentCalls:
         m_Calls: []
-    OnInputCanceled:
+    onInputCanceled:
       m_PersistentCalls:
         m_Calls: []
   OnDash:
     inputAction: {fileID: 3877731235847917323, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-    OnInputStarted:
+    onInputStarted:
       m_PersistentCalls:
         m_Calls: []
-    OnInput:
+    onInput:
       m_PersistentCalls:
         m_Calls: []
-    OnInputCanceled:
+    onInputCanceled:
+      m_PersistentCalls:
+        m_Calls: []
+  OnInventory:
+    inputAction: {fileID: -3487821262981697337, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    onInputStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    onInput:
+      m_PersistentCalls:
+        m_Calls: []
+    onInputCanceled:
       m_PersistentCalls:
         m_Calls: []
   inputAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

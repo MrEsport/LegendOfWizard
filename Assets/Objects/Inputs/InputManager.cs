@@ -10,6 +10,8 @@ public class InputManager : MonoBehaviour
     public InputEvent<Vector2> OnLook;
     public InputEvent OnDash;
 
+    public InputEvent OnInventory;
+
     public InputActionAsset inputAsset;
 
     private void Awake()
@@ -25,6 +27,7 @@ public class InputManager : MonoBehaviour
         OnMove.Init();
         OnLook.Init();
         OnDash.Init();
+        OnInventory.Init();
     }
 
     private void Start()
