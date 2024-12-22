@@ -5,29 +5,37 @@ using InputEventValue = InputEventsManagerSettings.InputEventValue;
 [CustomPropertyDrawer(typeof(InputEventValue), true)]
 public class InputEventValueDrawer : PropertyDrawer
 {
+    class LabelStyle
+    {
+        public static GUIContent Name = new GUIContent("Name");
+        public static GUIContent Type = new GUIContent("Input Type");
+        public static GUIContent Control = new GUIContent("Output");
+    }
+
     private SerializedProperty nameProp;
     private SerializedProperty typeProp;
     private SerializedProperty controlProp;
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        return base.GetPropertyHeight(property, label) - EditorGUIUtility.singleLineHeight;
+        return base.GetPropertyHeight(property, label);
     }
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         FindProperties(property);
 
-        EditorGUILayout.BeginHorizontal();
+        Rect baseRect = position;
+        baseRect.width /= 3f;
+        baseRect.width -= 4;
 
-        EditorGUILayout.PropertyField(nameProp, GUIContent.none);
-        EditorGUILayout.Space(15);
-        EditorGUILayout.PropertyField(typeProp, GUIContent.none);
-        EditorGUILayout.Space(15);
-        EditorGUILayout.PropertyField(controlProp, GUIContent.none);
+        EditorGUI.PropertyField(baseRect, nameProp, GUIContent.none);
+        baseRect.x += baseRect.width + 4;
 
-        GUILayout.FlexibleSpace();
-        EditorGUILayout.EndHorizontal();
+        EditorGUI.PropertyField(baseRect, typeProp, GUIContent.none);
+        baseRect.x += baseRect.width + 4;
+
+        EditorGUI.PropertyField(baseRect, controlProp, GUIContent.none);
     }
 
     private void FindProperties(SerializedProperty property)

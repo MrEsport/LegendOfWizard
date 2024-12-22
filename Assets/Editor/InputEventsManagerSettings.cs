@@ -10,7 +10,7 @@ public partial class InputEventsManagerSettings : ScriptableObject
     [SerializeField] private InputEventValue inputValue;
     [SerializeField] private InputActionAsset m_inputAsset;
 
-    [SerializeField] private List<InputEventValue> m_inputEvents;
+    [SerializeField] private List<InputEventValueMap> m_inputMapValues;
 
     internal static InputEventsManagerSettings GetOrCreateSettings()
     {
@@ -31,20 +31,23 @@ public partial class InputEventsManagerSettings : ScriptableObject
 
     public void GenerateInputEvents()
     {
-        m_inputEvents.Clear();
+        m_inputMapValues.Clear();
 
-        InputEventValue e;
+        Optional<InputEventValue> e;
+        InputEventValueMap mapValues;
         foreach (var map in m_inputAsset.actionMaps)
         {
+            mapValues = new InputEventValueMap(map.name);
             foreach (var action in map)
             {
                 //e = GetEventFromAction(action);
                 e = new InputEventValue(action);
-                if (e == null) continue;
+                if (e.Value == null) continue;
 
-                m_inputEvents.Add(e);
+                mapValues.Value.Add(e);
                 Debug.Log($"Added {action.name} : {action.type} ; {action.expectedControlType}");
             }
+            m_inputMapValues.Add(mapValues);
         }
     }
 

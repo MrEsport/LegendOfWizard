@@ -76,7 +76,7 @@ class InputEventsManagerSettingsProvider : SettingsProvider
             */
         }
 
-        var inputEventsProp = m_CustomSettings.FindProperty("m_inputEvents");
+        var inputEventsProp = m_CustomSettings.FindProperty("m_inputMapValues");
         EditorGUILayout.PropertyField(inputEventsProp, Styles.inputEvents);
 
         if (GUILayout.Button(Styles.generatePropertiesButton))

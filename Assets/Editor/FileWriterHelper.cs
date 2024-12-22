@@ -6,6 +6,7 @@ using System.Linq;
 public partial class InputEventsManagerSettings
 {
     const string INPUTMANAGERPROPERTIES_PATH = "/Objects/Inputs/InputManagerProperties.cs";
+
     const string PROPERTIES_AREA_START = "#region PROPERTIES_WRITE_AREA";
     const string PROPERTIES_AREA_END = "#endregion";
 
@@ -24,15 +25,22 @@ public partial class InputEventsManagerSettings
         lines.RemoveRange(startIndex, endIndex - startIndex);
 
         string prop = "";
-        m_inputEvents.ForEach(e =>
+        foreach (var map in m_inputMapValues)
         {
-            prop = $"\tpublic {GetInputEventString(e)} {e.Name};";
-            lines.Insert(startIndex++, prop);
-        });
+            if (!map.Enabled) continue;
+            foreach (var e in map.Value)
+            {
+                if (!e.Enabled) continue;
+                prop = GetPropertyString(e.Value);
+                lines.Insert(startIndex++, prop);
+            }
+        }
 
         File.WriteAllLines(filePath, lines);
         AssetDatabase.Refresh();
     }
+
+    private string GetPropertyString(InputEventValue value) => $"\tpublic {GetInputEventString(value)} {value.Name};";
 
     private string GetInputEventString(InputEventValue value)
     {
