@@ -1,18 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+public partial class InputManager : MonoBehaviour
 {
     private static InputManager instance;
     public static InputManager Instance { get => instance; }
-
-    public InputEvent<Vector2> OnMove;
-    public InputEvent<Vector2> OnLook;
-    public InputEvent OnDash;
-
-    public InputEvent OnInventory;
-
-    public InputActionAsset inputAsset;
 
     private void Awake()
     {
@@ -23,20 +16,5 @@ public class InputManager : MonoBehaviour
         }
 
         instance = this;
-
-        OnMove.Init();
-        OnLook.Init();
-        OnDash.Init();
-        OnInventory.Init();
-    }
-
-    private void Start()
-    {
-        foreach (var map in inputAsset.actionMaps)
-        {
-            foreach (var action in map.actions)
-            {
-            }
-        }
     }
 }

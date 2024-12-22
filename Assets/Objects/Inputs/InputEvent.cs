@@ -4,7 +4,14 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [Serializable]
-public class InputEvent : IDisposable
+public abstract class InputEvent : IDisposable
+{
+    public abstract void Dispose();
+
+}
+
+[Serializable]
+public class InputButtonEvent : InputEvent
 {
     [SerializeField] private InputActionReference inputAction;
     [SerializeField] protected UnityEvent onInputStarted;
@@ -29,14 +36,20 @@ public class InputEvent : IDisposable
         remove => onInputCanceled.RemoveListener(value);
     }
 
-    public InputEvent()
+    public InputButtonEvent()
     {
         onInputStarted = new UnityEvent();
         onInput = new UnityEvent();
         onInputCanceled = new UnityEvent();
     }
 
-    public virtual void Dispose()
+    public InputButtonEvent(InputActionReference action) : this()
+    {
+        inputAction = action;
+        Init();
+    }
+
+    public override void Dispose()
     {
         if (inputAction != null)
         {
@@ -77,7 +90,7 @@ public class InputEvent : IDisposable
 }
 
 [Serializable]
-public class InputEvent<T> : IDisposable
+public class InputValueEvent<T> : InputEvent
 {
     [SerializeField] private InputActionReference inputAction;
     [SerializeField] protected UnityEvent<T> onInputStarted;
@@ -102,14 +115,20 @@ public class InputEvent<T> : IDisposable
         remove => onInputCanceled.RemoveListener(value);
     }
 
-    public InputEvent()
+    public InputValueEvent()
     {
         onInputStarted = new UnityEvent<T>();
         onInput = new UnityEvent<T>();
         onInputCanceled = new UnityEvent();
     }
 
-    public virtual void Dispose()
+    public InputValueEvent(InputActionReference action) : this()
+    {
+        inputAction = action;
+        Init();
+    }
+
+    public override void Dispose()
     {
         if (inputAction != null)
         {

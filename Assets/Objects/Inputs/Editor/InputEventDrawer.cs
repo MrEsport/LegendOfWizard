@@ -1,8 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(InputEvent), true)]
-[CustomPropertyDrawer(typeof(InputEvent<>), true)]
+[CustomPropertyDrawer(typeof(InputButtonEvent), true)]
+[CustomPropertyDrawer(typeof(InputValueEvent<>), true)]
 public class InputEventDrawer : PropertyDrawer
 {
     private Color LINE_COLOR = new Color(.14f, .14f, .14f);
@@ -21,7 +21,7 @@ public class InputEventDrawer : PropertyDrawer
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        if (inputProp == null) FindProperties(property);
+        FindProperties(property);
 
         float labelWidth = EditorGUIUtility.labelWidth + 2;
         Rect foldoutWithoutField = GUILayoutUtility.GetRect(label, EditorStyles.foldoutHeader);
