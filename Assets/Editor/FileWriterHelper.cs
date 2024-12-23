@@ -47,4 +47,21 @@ public partial class InputEventsManagerSettings
         if (value.Type == InputEventValue.InputType.Button) return INPUT_BUTTON_EVENT;
         return $"{INPUT_VALUE_EVENT}<{value.Control}>";
     }
+
+    public void GetFieldInfos() => InitializeInputEvents();
+
+    private void InitializeInputEvents()
+    {
+        var inputEvents = m_inputMapValues.Where(m => m.Enabled).Select(m => m.Value).SelectMany(m => m.Where(m => m.Enabled).Select(e => e.Value)).ToArray();
+        var fields = typeof(InputManager).GetFields();
+
+        InputEvent ievent;
+        for (int i = 0; i < fields.Length; ++i)
+        {
+            ievent = fields[i].GetValue(InputManager.Instance) as InputEvent;
+            ievent.SetActionRef(inputEvents[i].ActionRef);
+
+            fields[i].SetValue(InputManager.Instance, ievent);
+        }
+    }
 }

@@ -12,14 +12,14 @@ public partial class InputEventsManagerSettings
         public string Name;
         public InputType Type;
         public ControlType Control;
-        public InputAction Action;
+        public InputActionReference ActionRef;
 
-        public InputEventValue(InputAction action)
+        public InputEventValue(InputActionReference actionRef)
         {
-            Action = action;
-            Name = $"On{action.name}";
+            ActionRef = actionRef;
+            Name = $"On{actionRef.action.name}";
 
-            var types = GetTypesFromActionType(action);
+            var types = GetTypesFromActionType(actionRef);
             Type = types.Item1;
             Control = types.Item2;
         }

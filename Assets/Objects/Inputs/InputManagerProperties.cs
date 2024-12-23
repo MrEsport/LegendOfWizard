@@ -8,8 +8,7 @@ public partial class InputManager
 	public InputValueEvent<Vector2> OnLook;
 	public InputButtonEvent OnDash;
 	public InputButtonEvent OnInventory;
-	public InputValueEvent<Vector2> OnNavigate;
-	public InputValueEvent<Vector2> OnPoint;
+	public InputButtonEvent OnClick;
 	public InputValueEvent<Vector2> OnScrollWheel;
 	public InputValueEvent<Vector3> OnTrackedDevicePosition;
 	public InputValueEvent<Quaternion> OnTrackedDeviceOrientation;

@@ -12,24 +12,199 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0421afb759ea00429405264f15201de, type: 3}
   m_Name: InputEventsSettings
   m_EditorClassIdentifier: 
-  inputValue:
-    Name: 
-    Type: 1
-    Control: 0
-    Action:
-      m_Name: 
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 96870c27-d1f5-472c-93e8-c4062fa0f62f
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
   m_inputAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_inputMapValues:
-  - name: 
-    m_value: []
+  - name: Gameplay_Gamepad
+    m_value:
+    - name: 
+      m_value:
+        Name: OnMove
+        Type: 1
+        Control: 1
+        ActionRef: {fileID: 1047609411023441853, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnLook
+        Type: 1
+        Control: 1
+        ActionRef: {fileID: -7635541363590034986, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnDash
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: 3877731235847917323, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnInventory
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: -3487821262981697337, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
     m_enabled: 1
-  - name: 
-    m_value: []
+  - name: UI
+    m_value:
+    - name: 
+      m_value:
+        Name: OnNavigate
+        Type: 1
+        Control: 1
+        ActionRef: {fileID: -8784545083839296357, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 0
+    - name: 
+      m_value:
+        Name: OnSubmit
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: 392368643174621059, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 0
+    - name: 
+      m_value:
+        Name: OnCancel
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: 7727032971491509709, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 0
+    - name: 
+      m_value:
+        Name: OnPoint
+        Type: 1
+        Control: 1
+        ActionRef: {fileID: -1654692200621890270, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 0
+    - name: 
+      m_value:
+        Name: OnClick
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: 3001919216989983466, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnRightClick
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: -4090225696740746782, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 0
+    - name: 
+      m_value:
+        Name: OnMiddleClick
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: -2185481485913320682, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 0
+    - name: 
+      m_value:
+        Name: OnScrollWheel
+        Type: 1
+        Control: 1
+        ActionRef: {fileID: 6240969308177333660, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnTrackedDevicePosition
+        Type: 1
+        Control: 2
+        ActionRef: {fileID: 6564999863303420839, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnTrackedDeviceOrientation
+        Type: 1
+        Control: 3
+        ActionRef: {fileID: 7970375526676320489, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
     m_enabled: 1
+  - name: Player
+    m_value:
+    - name: 
+      m_value:
+        Name: OnMove
+        Type: 1
+        Control: 1
+        ActionRef: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnLook
+        Type: 1
+        Control: 1
+        ActionRef: {fileID: -5630151704836100654, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnAttack
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnInteract
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: 1781555164194001046, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnCrouch
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: 7040659881675835329, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnJump
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnPrevious
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: 2411907206095950430, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnNext
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: 7476244043514120974, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    - name: 
+      m_value:
+        Name: OnSprint
+        Type: 0
+        Control: 0
+        ActionRef: {fileID: -7471211009204490832, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      m_enabled: 1
+    m_enabled: 0
+  m_inputActionReferences:
+  - {fileID: 1047609411023441853, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -7635541363590034986, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 3877731235847917323, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -3487821262981697337, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -8784545083839296357, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -7471211009204490832, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -5630151704836100654, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -4090225696740746782, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -2185481485913320682, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: -1654692200621890270, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 392368643174621059, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 1781555164194001046, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 2411907206095950430, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 3001919216989983466, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 6240969308177333660, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 6564999863303420839, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 7040659881675835329, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 7476244043514120974, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 7727032971491509709, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - {fileID: 7970375526676320489, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

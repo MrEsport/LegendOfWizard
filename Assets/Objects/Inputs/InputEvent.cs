@@ -6,14 +6,24 @@ using UnityEngine.InputSystem;
 [Serializable]
 public abstract class InputEvent : IDisposable
 {
-    public abstract void Dispose();
+    [SerializeField] protected InputActionReference inputAction;
+    private InputAction action;
 
+    public abstract void Dispose();
+    protected abstract void Init();
+
+    public void SetActionRef(InputActionReference actionRef)
+    {
+        inputAction = actionRef;
+        action = actionRef.action;
+        Init();
+    }
 }
 
 [Serializable]
 public class InputButtonEvent : InputEvent
 {
-    [SerializeField] private InputActionReference inputAction;
+    //[SerializeField] private InputActionReference inputAction;
     [SerializeField] protected UnityEvent onInputStarted;
     [SerializeField] protected UnityEvent onInput;
     [SerializeField] protected UnityEvent onInputCanceled;
@@ -43,10 +53,9 @@ public class InputButtonEvent : InputEvent
         onInputCanceled = new UnityEvent();
     }
 
-    public InputButtonEvent(InputActionReference action) : this()
+    public InputButtonEvent(InputActionReference actionRef) : this()
     {
-        inputAction = action;
-        Init();
+        SetActionRef(actionRef);
     }
 
     public override void Dispose()
@@ -63,7 +72,7 @@ public class InputButtonEvent : InputEvent
         onInputCanceled.RemoveAllListeners();
     }
 
-    public void Init()
+    protected override void Init()
     {
         if (inputAction == null)
             throw new MissingReferenceException($"{nameof(inputAction)} reference is missing");
@@ -92,7 +101,7 @@ public class InputButtonEvent : InputEvent
 [Serializable]
 public class InputValueEvent<T> : InputEvent
 {
-    [SerializeField] private InputActionReference inputAction;
+    //[SerializeField] private InputActionReference inputAction;
     [SerializeField] protected UnityEvent<T> onInputStarted;
     [SerializeField] protected UnityEvent<T> onInput;
     [SerializeField] protected UnityEvent onInputCanceled;
@@ -122,10 +131,9 @@ public class InputValueEvent<T> : InputEvent
         onInputCanceled = new UnityEvent();
     }
 
-    public InputValueEvent(InputActionReference action) : this()
+    public InputValueEvent(InputActionReference actionRef) : this()
     {
-        inputAction = action;
-        Init();
+        SetActionRef(actionRef);
     }
 
     public override void Dispose()
@@ -142,7 +150,7 @@ public class InputValueEvent<T> : InputEvent
         onInputCanceled.RemoveAllListeners();
     }
 
-    public void Init()
+    protected override void Init()
     {
         if (inputAction == null)
             throw new MissingReferenceException($"{nameof(inputAction)} reference is missing");

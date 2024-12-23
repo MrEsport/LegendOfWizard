@@ -79,10 +79,24 @@ class InputEventsManagerSettingsProvider : SettingsProvider
         var inputEventsProp = m_CustomSettings.FindProperty("m_inputMapValues");
         EditorGUILayout.PropertyField(inputEventsProp, Styles.inputEvents);
 
+        if (GUILayout.Button("[TEST] Get Action References"))
+        {
+            (m_CustomSettings.targetObject as InputEventsManagerSettings).GetActionReferencesFromAsset();
+        }
         if (GUILayout.Button(Styles.generatePropertiesButton))
         {
             (m_CustomSettings.targetObject as InputEventsManagerSettings).GeneratePropertiesCode();
         }
+
+        if (EditorApplication.isPlaying)
+        {
+            if (GUILayout.Button("[TEST] Get Field Infos"))
+            {
+                (m_CustomSettings.targetObject as InputEventsManagerSettings).GetFieldInfos();
+            }
+        }
+        else
+            EditorGUILayout.HelpBox("Application should be running to get FieldInfo", MessageType.Warning);
 
         if (EditorGUI.EndChangeCheck())
         {
@@ -92,7 +106,7 @@ class InputEventsManagerSettingsProvider : SettingsProvider
         //------------------------------ Handling sensitive Logic after Draws ------------------------------
         if (b_inputEventsDirty && Event.current.type == EventType.Repaint)
         {
-            (m_CustomSettings.targetObject as InputEventsManagerSettings).GenerateInputEvents();
+            (m_CustomSettings.targetObject as InputEventsManagerSettings).GenerateInputValuesFromAsset();
             m_CustomSettings.ApplyModifiedProperties();
             b_inputEventsDirty = false;
         }
